@@ -38,6 +38,20 @@ export const Gamestop: Store = {
         'https://www.gamestop.com/video-games/pc/components/graphics-cards/products/tuf-gaming-geforce-rtx-3080-graphics-card/11109446.html',
     },
     {
+      brand: 'asus',
+      model: 'strix',
+      series: '3080',
+      url:
+        'https://www.gamestop.com/video-games/pc/components/graphics-cards/products/geforce-rtx-3080-10-gb-gddr6x-strix-graphic-card/11112926.html',
+    },
+    {
+      brand: 'asus',
+      model: 'strix',
+      series: '3090',
+      url:
+        'https://www.gamestop.com/video-games/pc/components/graphics-cards/products/geforce-rtx-3090-24gb-gddr6x-pci-express-4.0-strix-graphics-card/11112502.html',
+    },
+    {
       brand: 'sony',
       model: 'ps5 console',
       series: 'sonyps5c',
