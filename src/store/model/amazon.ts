@@ -145,6 +145,14 @@ export const Amazon: Store = {
       url: 'https://www.amazon.com/dp/B08NYPKW1Z',
     },
     {
+      brand: 'pny',
+      cartUrl:
+        'https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B08NW5HNYW&Quantity.1=1',
+      model: 'uprising',
+      series: '3060ti',
+      url: 'https://www.amazon.com/dp/B08NW5HNYW',
+    },
+    {
       brand: 'asus',
       cartUrl:
         'https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B08L8LG4M3&Quantity.1=1',
