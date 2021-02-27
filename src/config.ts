@@ -208,6 +208,7 @@ const notifications = {
   discord: {
     notifyGroup: envOrArray(process.env.DISCORD_NOTIFY_GROUP),
     notifyGroupSeries: {
+      3060: envOrArray(process.env.DISCORD_NOTIFY_GROUP_3060),
       '3060ti': envOrArray(process.env.DISCORD_NOTIFY_GROUP_3060TI),
       3070: envOrArray(process.env.DISCORD_NOTIFY_GROUP_3070),
       3080: envOrArray(process.env.DISCORD_NOTIFY_GROUP_3080),
@@ -280,6 +281,7 @@ const notifications = {
       ['sprint', 'messaging.sprintpcs.com'],
       ['telus', 'msg.telus.com'],
       ['tmobile', 'tmomail.net'],
+      ['uscc', 'mms.uscc.net'],
       ['verizon', 'vtext.com'],
       ['virgin', 'vmobl.com'],
       ['virgin-ca', 'vmobile.ca'],
@@ -303,6 +305,10 @@ const notifications = {
   slack: {
     channel: envOrString(process.env.SLACK_CHANNEL),
     token: envOrString(process.env.SLACK_TOKEN),
+  },
+  smartthings: {
+    token: envOrString(process.env.SMARTTHINGS_TOKEN),
+    device: envOrString(process.env.SMARTTHINGS_SWITCH_LABEL),
   },
   soundPlayer: envOrString(process.env.SOUND_PLAYER),
   telegram: {
@@ -328,6 +334,13 @@ const notifications = {
     consumerKey: envOrString(process.env.TWITTER_CONSUMER_KEY),
     consumerSecret: envOrString(process.env.TWITTER_CONSUMER_SECRET),
     tweetTags: envOrString(process.env.TWITTER_TWEET_TAGS),
+  },
+  streamlabs: {
+    accessToken: envOrString(process.env.STREAMLABS_ACCESS_TOKEN),
+    type: envOrString(process.env.STREAMLABS_TYPE),
+    imageHref: envOrString(process.env.STREAMLABS_IMAGE),
+    soundHref: envOrString(process.env.STREAMLABS_SOUND),
+    duration: envOrNumber(process.env.STREAMLABS_DURATION),
   },
 };
 
@@ -362,6 +375,7 @@ const store = {
   country: envOrString(process.env.COUNTRY, 'usa'),
   maxPrice: {
     series: {
+      3060: envOrNumber(process.env.MAX_PRICE_SERIES_3060),
       '3060ti': envOrNumber(process.env.MAX_PRICE_SERIES_3060TI),
       3070: envOrNumber(process.env.MAX_PRICE_SERIES_3070),
       3080: envOrNumber(process.env.MAX_PRICE_SERIES_3080),
@@ -395,6 +409,7 @@ const store = {
     };
   }),
   showOnlySeries: envOrArray(process.env.SHOW_ONLY_SERIES, [
+    '3060',
     '3060ti',
     '3070',
     '3080',
@@ -440,6 +455,8 @@ const store = {
   }),
 };
 
+const restartTime = envOrNumber(process.env.RESTART_TIME, 0);
+
 export const defaultStoreData = {
   maxPageSleep: browser.maxSleep,
   minPageSleep: browser.minSleep,
@@ -454,6 +471,7 @@ export const config = {
   page,
   proxy,
   store,
+  restartTime,
 };
 
 export function setConfig(newConfig: any) {

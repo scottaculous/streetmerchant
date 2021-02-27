@@ -2,6 +2,7 @@
 
 | Environment variable | Description |
 |:---:|---|
+| `MAX_PRICE_SERIES_3060` | Maximum price allowed for a match, applies 3060 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_3060TI` | Maximum price allowed for a match, applies 3060 Ti series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_3070` | Maximum price allowed for a match, applies 3070 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_3080` | Maximum price allowed for a match, applies 3080 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
@@ -87,9 +88,11 @@ Used with the `STORES` variable.
 | Cyberport | DE | `cyberport` |
 | DComp | AU | `dcomp`|
 | Drako | IT | `drako` |
+| DustinHome | NO | `dustinhome-no` |
 | EBGames | CA | `ebgames`|
 | eBuyer | UK | `ebuyer`|
 | El Corte Inglés | ES | `elcorteingles`|
+| Elkjop | NO | `elkjop`|
 | ePrice | IT | `eprice`|
 | Euronics | IT | `euronics`|
 | Euronics | DE | `euronics-de`|
@@ -105,12 +108,14 @@ Used with the `STORES` variable.
 | Gamestop | DE | `gamestop-de`|
 | Gamestop | IE | `gamestop-ie`|
 | Gamestop | IT | `gamestop-it`|
+| Globaldata | PT | `globaldata`|
 | HarrisTechnology | AU |  `harristechnology`|
 | Harvey Normans | IE | `harveynorman-ie` |
 | Hardware Planet | IT | | `hardware-planet` |
 | iGame Computer | AU |  `igame-computer`|
 | John Lewis | UK | `johnlewis`|
 | Kabum | BR | `kabum`|
+| Komplett | NO | `komplett-no`|
 | Landmark Computers | AU |  `landmark-computers`|
 | Mediamarkt | DE | `mediamarkt`|
 | Medimax | DE | `medimax`|
@@ -120,6 +125,7 @@ Used with the `STORES` variable.
 | Mindfactory | DE | `mindfactory` |
 | MSY | AU |  `msy`|
 | Mwave | AU | `mwave`|
+| Netonnet | NO | `netonnet-no`|
 | Newegg | US | `newegg`|
 | Newegg | CA | `newegg-ca`|
 | Newegg | SG | `newegg-sg`|
@@ -134,11 +140,14 @@ Used with the `STORES` variable.
 | PCByte | AU |  `pcbyte`|
 | PCCG | AU | `pccg`|
 | PCComponentes | ES | `pccomponentes`|
+| PCDiga | PT | `pcdiga`|
 | PCKing | DE | `pcking` |
 | PlayStation | US | `playstation`|
 | PNY | US | `pny`|
+| Power | NO | `power-no`|
 | Proshop | DE | `proshop-de`|
 | Proshop | DK | `proshop-dk`|
+| Proshop | NO | `proshop-no`|
 | Rosman | AU |  `rosman`|
 | Rosman-Melb | AU |  `rosman-melb`|
 | Saturn | DE | `saturn`|
@@ -220,6 +229,7 @@ Used with the `SHOW_ONLY_SERIES` variable.
 | AMD RX 6800 | `rx6800` |
 | AMD RX 6800XT | `rx6800xt` |
 | AMD RX 6900XT | `rx6900xt` |
+| Nvidia RTX 3060 | `3060` |
 | Nvidia RTX 3060 Ti | `3060ti` |
 | Nvidia RTX 3070 | `3070` |
 | Nvidia RTX 3080 | `3080` |
