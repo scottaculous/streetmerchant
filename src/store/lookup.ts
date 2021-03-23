@@ -449,6 +449,7 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
     }
   }
 
+<<<<<<< HEAD
   // Fixme: currently causing issues
   // Do API inventory validation in realtime (no cache) if available
   if (
@@ -459,19 +460,9 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
   }
 
   if (store.labels.inStock) {
-    const options = {
-      ...baseOptions,
-      requireVisible: true,
-      type: 'outerHTML' as const,
-    };
-
-    if (!(await pageIncludesLabels(page, store.labels.inStock, options))) {
-      logger.info(Print.outOfStock(link, store, true));
-      return false;
-    }
-  }
-
+=======
   if (link.labels?.inStock) {
+>>>>>>> upstream/main
     const options = {
       ...baseOptions,
       requireVisible: true,
@@ -479,6 +470,19 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
     };
 
     if (!(await pageIncludesLabels(page, link.labels.inStock, options))) {
+      logger.info(Print.outOfStock(link, store, true));
+      return false;
+    }
+  }
+
+  if (store.labels.inStock) {
+    const options = {
+      ...baseOptions,
+      requireVisible: true,
+      type: 'outerHTML' as const,
+    };
+
+    if (!(await pageIncludesLabels(page, store.labels.inStock, options))) {
       logger.info(Print.outOfStock(link, store, true));
       return false;
     }
