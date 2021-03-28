@@ -1,6 +1,6 @@
 import {Store} from './store';
 
-export const Amd: Store = {
+export const CollectiveMinds: Store = {
   currency: '$',
   labels: {
     inStock: {

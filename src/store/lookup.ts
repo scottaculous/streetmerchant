@@ -449,7 +449,6 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
     }
   }
 
-<<<<<<< HEAD
   // Fixme: currently causing issues
   // Do API inventory validation in realtime (no cache) if available
   if (
@@ -460,9 +459,6 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
   }
 
   if (store.labels.inStock) {
-=======
-  if (link.labels?.inStock) {
->>>>>>> upstream/main
     const options = {
       ...baseOptions,
       requireVisible: true,
