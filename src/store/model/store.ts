@@ -16,6 +16,7 @@ export type Brand =
   | 'amd'
   | 'asrock'
   | 'asus'
+  | 'collectiveminds'
   | 'colorful'
   | 'corsair'
   | 'evga'
@@ -39,6 +40,7 @@ export type Brand =
 export type Series =
   | 'test:series'
   | 'captcha-deterrent'
+  | 'cronus'
   | '3060'
   | '3060ti'
   | '3070'
@@ -181,7 +183,8 @@ export type Model =
   | 'xlr8 epic x'
   | 'xlr8 gaming'
   | 'xlr8 revel'
-  | 'xlr8 uprising';
+  | 'xlr8 uprising'
+  | 'zen';
 
 export type Link = {
   brand: Brand;
