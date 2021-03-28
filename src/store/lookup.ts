@@ -465,7 +465,7 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
       type: 'outerHTML' as const,
     };
 
-    if (!(await pageIncludesLabels(page, link.labels.inStock, options))) {
+    if (!(await pageIncludesLabels(page, store.labels.inStock, options))) {
       logger.info(Print.outOfStock(link, store, true));
       return false;
     }
