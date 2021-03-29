@@ -42,7 +42,7 @@ export function sendDiscordMessage(link: Link, store: Store) {
 
         embed.addField('Other Links', `[Login](${link.loginUrl}) | [Cart](${link.cartUrl})`, true);
 
-        embed.setFooter('DripAIO | Powered by Slacker Moniter', '');
+        embed.setFooter('DripAIO | Powered by Slacker Monitor', '');
 
         embed.setTimestamp();
 
