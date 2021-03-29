@@ -26,6 +26,7 @@ export function sendDiscordMessage(link: Link, store: Store) {
       try {
         const embed = new Discord.MessageEmbed()
           .setTitle(link.name)
+          .setDescription(link.brand)
           .setURL(link.url)
           .setColor('#52b788')
           .setTimestamp();
