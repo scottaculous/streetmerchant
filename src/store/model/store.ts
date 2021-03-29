@@ -188,6 +188,7 @@ export type Model =
 
   export type Link = {
     brand: Brand;
+    name?: string;
     cartUrl?: string;
     itemNumber?: string;
     labels?: Labels;
@@ -197,6 +198,7 @@ export type Model =
     series: Series;
     screenshot?: string;
     url: string;
+    loginUrl?: string;
   };
   
   export type LabelQuery = Element[] | Element | string[];

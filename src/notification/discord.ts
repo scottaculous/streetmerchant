@@ -25,25 +25,23 @@ export function sendDiscordMessage(link: Link, store: Store) {
     (async () => {
       try {
         const embed = new Discord.MessageEmbed()
-          //.setTitle('_**Stock alert!**_')
-          //.setDescription(
-          //  '> provided by a slacker'
-          //)
-          .setThumbnail(
-            'https://cdn.shopify.com/s/files/1/0301/9790/7501/products/cronus_zen_trans_shadow_800_480x.png'
-          )
+          .setTitle(link.name)
+          .setURL(link.url)
           .setColor('#52b788')
           .setTimestamp();
 
-        embed.addField('Store', store.name, true);
+        if (link.screenshot) embed.setThumbnail(link.screenshot)
+        
+        embed.addField('Status', 'In Stock', true);
+
         if (link.price)
           embed.addField('Price', `${store.currency}${link.price}`, true);
-        embed.addField('Product Page', link.url);
-        if (link.cartUrl) embed.addField('Add to Cart', link.cartUrl);
-        //embed.addField('Brand', link.brand, true);
-        //embed.addField('Model', link.model, true);
-        //embed.addField('Series', link.series, true);
-        embed.addField('Status', "In Stock", true);
+        
+        if (link.cartUrl) embed.addField('Add to Cart', `[ATC](${link.cartUrl})`, true);
+
+        embed.addField('Other Links', `[Login](${link.loginUrl}) | [Cart](${link.cartUrl})`, true);
+
+        embed.setFooter('DripAIO | Powered by Slacker Moniter', '');
 
         embed.setTimestamp();
 

@@ -10,6 +10,8 @@ const link: Link = {
   price: 100,
   series: 'test:series',
   url: 'https://www.example.com/url',
+  loginUrl: 'https://www.example.com/url',
+  name: "Test Product Name",
 };
 
 const store: Store = {
