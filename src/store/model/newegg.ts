@@ -1028,6 +1028,15 @@ export const Newegg: Store = {
         'https://www.newegg.com/asus-geforce-rtx-3060-dual-rtx3060-12g/p/N82E16814126493',
     },
     {
+      brand: 'gigabyte',
+      cartUrl:
+        'https://secure.newegg.com/Shopping/AddtoCart.aspx?Submit=ADD&ItemList=N82E16814932402',
+      model: 'gaming oc',
+      series: '3060',
+      url:
+        'https://www.newegg.com/gigabyte-geforce-rtx-3060-gv-n3060gaming-oc-12gd/p/N82E16814932402',
+    },
+    {
       brand: 'zotac',
       cartUrl:
         'https://secure.newegg.com/Shopping/AddtoCart.aspx?Submit=ADD&ItemList=N82E16814500508',
