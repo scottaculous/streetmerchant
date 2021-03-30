@@ -40,7 +40,7 @@ export function sendDiscordMessage(link: Link, store: Store) {
         
         if (link.cartUrl) embed.addField('Add to Cart', `[ATC](${link.cartUrl})`, true);
 
-        embed.addField('Other Links', `[Login](${link.loginUrl}) | [Cart](${link.cartUrl})`, true);
+        embed.addField('Other Links', `[Login](${link.loginUrl})`, true);
 
         embed.setFooter('DripAIO | Powered by Slacker Monitor', '');
 
