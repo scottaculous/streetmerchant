@@ -49,6 +49,7 @@ export type Series =
   | 'darkhero'
   | 'rx5700'
   | 'rx5700xt'
+  | 'rx6700xt'  
   | 'rx6800'
   | 'rx6800xt'
   | 'rx6900xt'
