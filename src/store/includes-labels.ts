@@ -5,7 +5,7 @@ import {logger} from '../logger';
 export type Selector = {
   requireVisible: boolean;
   selector: string;
-  type: 'innerHTML' | 'outerHTML' | 'textContent';
+  type: 'innerHTML' | 'outerHTML' | 'textContent' | 'imgSrc' ;
 };
 
 function isElementArray(query: LabelQuery): query is Element[] {
@@ -72,7 +72,7 @@ export async function extractPageContents(
   selector: Selector
 ): Promise<string | null> {
   return page.evaluate((options: Selector) => {
-    const element: globalThis.HTMLElement | null = document.querySelector(
+    const element: globalThis.HTMLImageElement | null = document.querySelector(
       options.selector
     );
 
@@ -86,7 +86,7 @@ export async function extractPageContents(
     ) {
       return null;
     }
-
+    
     switch (options.type) {
       case 'innerHTML':
         return element.innerHTML;
@@ -94,6 +94,8 @@ export async function extractPageContents(
         return element.outerHTML;
       case 'textContent':
         return element.textContent;
+      case 'imgSrc':
+        return element.src;
       default:
         return 'Error: selector.type is unknown';
     }
@@ -134,5 +136,35 @@ export async function getPrice(
     return price;
   }
 
+  return null;
+}
+
+export async function getTitle(
+  page: Page,
+  query: string,
+  options: Selector
+): Promise<string | null> {
+  const selector = {...options, selector: query};
+  const titleString = await extractPageContents(page, selector);
+
+  if (titleString) {
+    logger.debug('title', titleString);
+    return titleString;
+  }
+  return null;
+}
+
+export async function getImage(
+  page: Page,
+  query: string,
+  options: Selector
+): Promise<string | null> {
+  const selector = {...options, selector: query};
+  const imageString = await extractPageContents(page, selector);
+
+  if (imageString) {
+    logger.debug('image', imageString);
+    return imageString;
+  }
   return null;
 }

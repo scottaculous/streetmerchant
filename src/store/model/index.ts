@@ -79,6 +79,7 @@ import {Globaldata} from './globaldata';
 import {HardwarePlanet} from './hardware-planet';
 import {HarrisTechnology} from './harristechnology';
 import {HarveyNormanIE} from './harveynorman-ie';
+import {Intex} from './intex';
 import {Igamecomputer} from './igame';
 import {JohnLewis} from './johnlewis';
 import {Kabum} from './kabum';
@@ -229,6 +230,7 @@ export const storeList = new Map([
   [HarrisTechnology.name, HarrisTechnology],
   [HarveyNormanIE.name, HarveyNormanIE],
   [Igamecomputer.name, Igamecomputer],
+  [Intex.name, Intex],
   [JohnLewis.name, JohnLewis],
   [Kabum.name, Kabum],
   [KomplettNO.name, KomplettNO],

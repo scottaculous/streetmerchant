@@ -24,6 +24,7 @@ export type Brand =
   | 'galax'
   | 'gigabyte'
   | 'inno3d'
+  | 'intex'
   | 'kfa2'
   | 'leadtek'
   | 'microsoft'
@@ -47,6 +48,7 @@ export type Series =
   | '3080'
   | '3090'
   | 'darkhero'
+  | 'intex'
   | 'rx5700'
   | 'rx5700xt'
   | 'rx6700xt'  
@@ -125,6 +127,7 @@ export type Model =
   | 'igame advanced oc'
   | 'igame ultra oc'
   | 'igame vulcan oc'
+  | 'intex'
   | 'ko oc'
   | 'ko'
   | 'mech oc'
@@ -189,7 +192,7 @@ export type Model =
 
   export type Link = {
     brand: Brand;
-    name?: string;
+    name?: string | null;
     cartUrl?: string;
     itemNumber?: string;
     labels?: Labels;
@@ -197,9 +200,10 @@ export type Model =
     openCartAction?: (browser: Browser) => Promise<string>;
     price?: number | null;
     series: Series;
-    screenshot?: string;
+    screenshot?: string | null;
     url: string;
     loginUrl?: string;
+    notified?: boolean | false;
   };
   
   export type LabelQuery = Element[] | Element | string[];
@@ -211,6 +215,11 @@ export type Model =
     inStock?: LabelQuery;
     outOfStock?: LabelQuery;
     maxPrice?: Pricing;
+    productTitle?: string;
+    productImage?: string;
+    productId?: string;
+    loginUrl?: string;
+    cartUrl?: string;
   };
   
   export type CaptchaDeterrent = {

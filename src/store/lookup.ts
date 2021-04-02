@@ -7,7 +7,7 @@ import {
 } from 'puppeteer';
 import {Link, Store, getStores} from './model';
 import {Print, logger} from '../logger';
-import {Selector, getPrice, pageIncludesLabels} from './includes-labels';
+import {Selector, getPrice, getTitle, getImage, pageIncludesLabels} from './includes-labels';
 import {
   closePage,
   delay,
@@ -319,7 +319,11 @@ async function lookupCard(
         : link.openCartAction(browser));
     }
 
-    sendNotification(link, store);
+    // don't send notification, if it's in stock and notified
+    if (!link.notified) {
+      sendNotification(link, store);
+      link.notified = true;
+    }
 
     if (config.page.inStockWaitTime) {
       inStock[link.url] = true;
@@ -414,6 +418,12 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
     type: 'textContent',
   };
 
+  const imageOptions: Selector = {
+    requireVisible: false,
+    selector: store.labels.container ?? 'body',
+    type: 'imgSrc',
+  };
+
   if (store.labels.captcha) {
     if (await pageIncludesLabels(page, store.labels.captcha, baseOptions)) {
       logger.warn(Print.captcha(link, store, true));
@@ -434,8 +444,21 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
   if (store.labels.outOfStock) {
     if (await pageIncludesLabels(page, store.labels.outOfStock, baseOptions)) {
       logger.info(Print.outOfStock(link, store, true));
+      link.notified = false;
       return false;
     }
+  }
+
+  if (store.labels.productTitle) {
+    link.name = await getTitle(page, store.labels.productTitle, baseOptions);
+  }
+
+  if (store.labels.productImage) {
+    link.screenshot = await getImage(page, store.labels.productImage, imageOptions);
+  }
+
+  if (store.labels.loginUrl) {
+    link.loginUrl = store.labels.loginUrl;
   }
 
   if (store.labels.maxPrice) {
@@ -448,7 +471,7 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
       return false;
     }
   }
-
+  
   // Fixme: currently causing issues
   // Do API inventory validation in realtime (no cache) if available
   // if (

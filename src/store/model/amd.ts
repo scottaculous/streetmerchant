@@ -13,7 +13,7 @@ export const Amd: Store = {
     },
     outOfStock: {
       container: '.product-out-of-stock',
-      text: ['out of cart'],
+      text: ['out of stock'],
     }
   },
   links: [
@@ -42,6 +42,7 @@ export const Amd: Store = {
       url: 'https://www.amd.com/en/direct-buy/5450881500/us',
     },
     // {
+    //   name: 'AMD RYZEN 9 5800 Processor',
     //   brand: 'amd',
     //   cartUrl:
     //     'https://www.amd.com/en/direct-buy/5450881600/us?add-to-cart=true',

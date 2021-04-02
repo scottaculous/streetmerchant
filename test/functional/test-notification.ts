@@ -10,7 +10,6 @@ const link: Link = {
   price: 100,
   series: 'test:series',
   url: 'https://www.example.com/url',
-  loginUrl: 'https://www.example.com/url',
   name: "Test Product Name",
   screenshot: 'https://pbs.twimg.com/profile_images/1362198571185893379/ki4usJyO_400x400.jpg',
 };
@@ -22,6 +21,7 @@ const store: Store = {
       container: 'test:container',
       text: ['test:text'],
     },
+    loginUrl: 'https://www.example.com/url',
   },
   links: [link],
   name: 'test:name',
