@@ -310,6 +310,7 @@ const notifications = {
     sound: envOrString(process.env.PUSHOVER_SOUND, 'pushover'),
     token: envOrString(process.env.PUSHOVER_TOKEN),
     username: envOrString(process.env.PUSHOVER_USER),
+    device: envOrString(process.env.PUSHOVER_DEVICE),
   },
   redis: {
     url: envOrString(process.env.REDIS_URL),
@@ -353,6 +354,10 @@ const notifications = {
     imageHref: envOrString(process.env.STREAMLABS_IMAGE),
     soundHref: envOrString(process.env.STREAMLABS_SOUND),
     duration: envOrNumber(process.env.STREAMLABS_DURATION),
+  },
+  freemobile: {
+    id: envOrString(process.env.FREEMOBILE_ID),
+    apiKey: envOrString(process.env.FREEMOBILE_API_KEY),
   },
 };
 
