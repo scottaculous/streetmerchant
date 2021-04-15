@@ -449,7 +449,6 @@ async function isItemInStock(store: Store, page: Page, link: Link) {
     }
   }
 
-<<<<<<< HEAD
   if (store.labels.productTitle) {
     link.name = await getTitle(page, store.labels.productTitle, baseOptions);
   }
@@ -483,9 +482,6 @@ async function isItemInStock(store: Store, page: Page, link: Link) {
   // }
 
   if (store.labels.inStock) {
-=======
-  if (link.labels?.inStock) {
->>>>>>> upstream/main
     const options = {
       ...baseOptions,
       requireVisible: true,
