@@ -48,6 +48,13 @@ export const Intex: Store = {
         url: 'https://intexcorp.com/products/above-ground-pools/krystal-clear-filtration-sanitation/cartridge-filter-pumps/1000-gph-krystal-clear-cartridge-filter-pump-110-120v-with-gfci/',
     },
     {
+      brand: 'intex',
+      model: 'intex',
+      series: 'intex',
+      cartUrl: 'https://intexcorp.com/cart.php?action=add&product_id=1401',
+      url: 'https://intexcorp.com/replacement-parts/above-ground-pools/easy-set/15ft-x-42in/2017/28165eh/pump/11469eg-1000-gal-filter-pump-housing-and-motor-120v/',
+    },
+    {
         brand: 'intex',
         model: 'intex',
         series: 'intex',
