@@ -1,16 +1,11 @@
 import {Store} from './store';
 
-export const Alternate: Store = {
+export const AlternateDe: Store = {
   currency: '€',
   labels: {
     inStock: {
-      container: 'span.d-flex > b:nth-child(1)',
-      text: [
-        'auf lager',
-        'ware neu eingetroffen',
-        'in kürze versandfertig',
-        'ware im zulauf',
-      ],
+      container: '.details-cart-button',
+      text: ['In den Warenkorb'],
     },
     maxPrice: {
       container: '.price > span:nth-child(1)',
@@ -24,6 +19,10 @@ export const Alternate: Store = {
       {
         container: 'span.d-flex > b:nth-child(1)',
         text: ['Artikel kann nicht gekauft werden'],
+      },
+      {
+        container: 'div.col-12 > div:nth-child(1)',
+        text: ['Artikel kann derzeit nicht gekauft werden'],
       },
     ],
   },
@@ -143,6 +142,18 @@ export const Alternate: Store = {
       url: 'https://www.alternate.de/html/product/1715299',
     },
     {
+      brand: 'msi',
+      model: 'gaming z trio',
+      series: '3060',
+      url: 'https://www.alternate.de/html/product/1753367',
+    },
+    {
+      brand: 'msi',
+      model: 'ventus 2x oc',
+      series: '3060',
+      url: 'https://www.alternate.de/html/product/1719422',
+    },
+    {
       brand: 'asus',
       model: 'tuf oc',
       series: '3060ti',
@@ -239,6 +250,72 @@ export const Alternate: Store = {
       url: 'https://www.alternate.de/html/product/1694335',
     },
     {
+      brand: 'zotac',
+      model: 'twin edge oc',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1758204',
+    },
+    {
+      brand: 'gigabyte',
+      model: 'aorus elite',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1769551',
+    },
+    {
+      brand: 'asus',
+      model: 'tuf oc',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1758690',
+    },
+    {
+      brand: 'asus',
+      model: 'dual mini oc',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1758702',
+    },
+    {
+      brand: 'msi',
+      model: 'gaming x',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1758136',
+    },
+    {
+      brand: 'msi',
+      model: 'gaming z trio',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1758139',
+    },
+    {
+      brand: 'msi',
+      model: 'ventus 2x oc',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1758141',
+    },
+    {
+      brand: 'palit',
+      model: 'dual',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1780517',
+    },
+    {
+      brand: 'gigabyte',
+      model: 'gaming pro oc',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1762625',
+    },
+    {
+      brand: 'inno3d',
+      model: 'twin x2 oc',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1753819',
+    },
+    {
+      brand: 'asus',
+      model: 'dual mini',
+      series: '3060ti',
+      url: 'https://www.alternate.de/html/product/1758703',
+    },
+    {
       brand: 'asus',
       model: 'dual oc',
       series: '3070',
@@ -252,21 +329,9 @@ export const Alternate: Store = {
     },
     {
       brand: 'asus',
-      model: 'strix oc',
-      series: '3070',
-      url: 'https://www.alternate.de/html/product/1677330',
-    },
-    {
-      brand: 'asus',
       model: 'tuf',
       series: '3070',
       url: 'https://www.alternate.de/html/product/1679872',
-    },
-    {
-      brand: 'evga',
-      model: 'ftw3 ultra',
-      series: '3070',
-      url: 'https://www.alternate.de/html/product/1687863',
     },
     {
       brand: 'evga',
@@ -302,7 +367,7 @@ export const Alternate: Store = {
       brand: 'gigabyte',
       model: 'aorus master',
       series: '3070',
-      url: 'https://www.alternate.de/html/product/1688810',
+      url: 'https://www.alternate.de/html/product/1768036',
     },
     {
       brand: 'gigabyte',
@@ -320,7 +385,7 @@ export const Alternate: Store = {
       brand: 'inno3d',
       model: 'ichill x4',
       series: '3070',
-      url: 'https://www.alternate.de/html/product/1681759',
+      url: 'https://www.alternate.de/html/product/1753794',
     },
     {
       brand: 'inno3d',
@@ -335,10 +400,76 @@ export const Alternate: Store = {
       url: 'https://www.alternate.de/html/product/1681768',
     },
     {
+      brand: 'msi',
+      model: 'gaming z trio',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1758122',
+    },
+    {
+      brand: 'gigabyte',
+      model: 'gaming oc',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1765420',
+    },
+    {
+      brand: 'msi',
+      model: 'suprim x',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1758120',
+    },
+    {
+      brand: 'evga',
+      model: 'ftw3 ultra',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1756007',
+    },
+    {
+      brand: 'asus',
+      model: 'strix oc',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1758701',
+    },
+    {
+      brand: 'gainward',
+      model: 'phantom',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1780254',
+    },
+    {
+      brand: 'msi',
+      model: 'ventus 2x oc',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1758134',
+    },
+    {
+      brand: 'gainward',
+      model: 'phantom gs',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1780260',
+    },
+    {
+      brand: 'zotac',
+      model: 'twin edge oc',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1758192',
+    },
+    {
+      brand: 'asus',
+      model: 'tuf oc',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1758698',
+    },
+    {
+      brand: 'zotac',
+      model: 'amp holo',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1758184',
+    },
+    {
       brand: 'palit',
       model: 'gaming pro',
       series: '3070',
-      url: 'https://www.alternate.de/html/product/1684572',
+      url: 'https://www.alternate.de/html/product/1780508',
     },
     {
       brand: 'palit',
@@ -371,6 +502,60 @@ export const Alternate: Store = {
       url: 'https://www.alternate.de/html/product/1679097',
     },
     {
+      brand: 'gainward',
+      model: 'phoenix',
+      series: '3070',
+      url: 'https://www.alternate.de/html/product/1771999',
+    },
+    {
+      brand: 'asus',
+      model: 'tuf oc',
+      series: '3070ti',
+      url: 'https://www.alternate.de/html/product/1756986',
+    },
+    {
+      brand: 'gainward',
+      model: 'phoenix',
+      series: '3070ti',
+      url: 'https://www.alternate.de/html/product/1755059',
+    },
+    {
+      brand: 'zotac',
+      model: 'trinity oc',
+      series: '3070ti',
+      url: 'https://www.alternate.de/html/product/1770275',
+    },
+    {
+      brand: 'palit',
+      model: 'gaming pro',
+      series: '3070ti',
+      url: 'https://www.alternate.de/html/product/1755057',
+    },
+    {
+      brand: 'msi',
+      model: 'ventus 3x oc',
+      series: '3070ti',
+      url: 'https://www.alternate.de/html/product/1753410',
+    },
+    {
+      brand: 'asus',
+      model: 'tuf',
+      series: '3070ti',
+      url: 'https://www.alternate.de/html/product/1756984',
+    },
+    {
+      brand: 'gigabyte',
+      model: 'gaming oc',
+      series: '3070ti',
+      url: 'https://www.alternate.de/html/product/1756202',
+    },
+    {
+      brand: 'gigabyte',
+      model: 'aorus master',
+      series: '3070ti',
+      url: 'https://www.alternate.de/html/product/1759465',
+    },
+    {
       brand: 'asus',
       model: 'strix',
       series: '3080',
@@ -386,7 +571,7 @@ export const Alternate: Store = {
       brand: 'asus',
       model: 'strix oc',
       series: '3080',
-      url: 'https://www.alternate.de/html/product/1672867',
+      url: 'https://www.alternate.de/html/product/1766848',
     },
     {
       brand: 'asus',
@@ -564,12 +749,6 @@ export const Alternate: Store = {
     },
     {
       brand: 'zotac',
-      model: 'amp holo',
-      series: '3080',
-      url: 'https://www.alternate.de/html/product/1677985',
-    },
-    {
-      brand: 'zotac',
       model: 'trinity oc',
       series: '3080',
       url: 'https://www.alternate.de/html/product/1677989',
@@ -579,6 +758,48 @@ export const Alternate: Store = {
       model: 'trinity',
       series: '3080',
       url: 'https://www.alternate.de/html/product/1672612',
+    },
+    {
+      brand: 'msi',
+      model: 'suprim x',
+      series: '3080',
+      url: 'https://www.alternate.de/html/product/1758116',
+    },
+    {
+      brand: 'gainward',
+      model: 'phantom',
+      series: '3080',
+      url: 'https://www.alternate.de/html/product/1780243',
+    },
+    {
+      brand: 'gainward',
+      model: 'phoenix',
+      series: '3080',
+      url: 'https://www.alternate.de/html/product/1780244',
+    },
+    {
+      brand: 'msi',
+      model: 'gaming z trio',
+      series: '3080',
+      url: 'https://www.alternate.de/html/product/1758119',
+    },
+    {
+      brand: 'zotac',
+      model: 'amp holo',
+      series: '3080',
+      url: 'https://www.alternate.de/html/product/1758181',
+    },
+    {
+      brand: 'zotac',
+      model: 'trinity oc',
+      series: '3080',
+      url: 'https://www.alternate.de/html/product/1758185',
+    },
+    {
+      brand: 'gigabyte',
+      model: 'aorus master',
+      series: '3080',
+      url: 'https://www.alternate.de/html/product/1765406',
     },
     {
       brand: 'asus',
@@ -597,6 +818,12 @@ export const Alternate: Store = {
       model: 'strix oc white',
       series: '3090',
       url: 'https://www.alternate.de/html/product/1701891',
+    },
+    {
+      brand: 'asus',
+      model: 'strix white',
+      series: '3090',
+      url: 'https://www.alternate.de/html/product/1701894',
     },
     {
       brand: 'asus',
@@ -651,6 +878,12 @@ export const Alternate: Store = {
       model: 'phantom',
       series: '3090',
       url: 'https://www.alternate.de/html/product/1688769',
+    },
+    {
+      brand: 'gainward',
+      model: 'phantom',
+      series: '3090',
+      url: 'https://www.alternate.de/html/product/1780227',
     },
     {
       brand: 'gainward',
@@ -819,6 +1052,18 @@ export const Alternate: Store = {
       model: '5950x',
       series: 'ryzen5950',
       url: 'https://www.alternate.de/html/product/1685584',
+    },
+    {
+      brand: 'asrock',
+      model: 'challenger',
+      series: 'rx6700xt',
+      url: 'https://www.alternate.de/html/product/1757933',
+    },
+    {
+      brand: 'xfx',
+      model: 'merc',
+      series: 'rx6700xt',
+      url: 'https://www.alternate.de/html/product/1730305',
     },
     {
       brand: 'gigabyte',
@@ -997,9 +1242,15 @@ export const Alternate: Store = {
     {
       brand: 'sony',
       model: 'ps5 console',
+      series: 'sonyps5c',
+      url: 'https://www.alternate.de/html/product/1750947',
+    },
+    {
+      brand: 'sony',
+      model: 'ps5 console',
       series: 'sonyps5de',
       url: 'https://www.alternate.de/html/product/1651221',
     },
   ],
-  name: 'alternate',
+  name: 'alternate-de',
 };

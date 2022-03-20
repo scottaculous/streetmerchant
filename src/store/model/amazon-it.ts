@@ -8,12 +8,17 @@ export const AmazonIt: Store = {
       container: 'body',
       text: ['Inserisci i caratteri visualizzati nello spazio sottostante'],
     },
+    captchaHandler: {
+      challenge: 'img',
+      input: '#captchacharacters',
+      submit: 'button[type="submit"]',
+    },
     inStock: {
       container: '#desktop_buybox',
       text: ['Aggiungi al carrello'],
     },
     maxPrice: {
-      container: '#priceblock_ourprice',
+      container: '.a-text-price',
       euroFormat: true,
     },
   },

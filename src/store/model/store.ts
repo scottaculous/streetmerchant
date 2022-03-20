@@ -41,11 +41,13 @@ export type Brand =
 export type Series =
   | 'test:series'
   | 'captcha-deterrent'
-  | 'cronus'
+  | '3050'
   | '3060'
   | '3060ti'
   | '3070'
+  | '3070ti'
   | '3080'
+  | '3080ti'
   | '3090'
   | 'darkhero'
   | 'intex'
@@ -87,9 +89,13 @@ export type Model =
   | 'aorus xtreme waterforce'
   | 'aorus xtreme waterforce wb'
   | 'aorus'
+  | 'aorus box'
+  | 'articstorm'
   | 'battle-ax'
   | 'challenger'
+  | 'challenger oc'
   | 'challenger pro'
+  | 'challenger pro oc'
   | 'crosshair viii'
   | 'dual fan'
   | 'dual oc'
@@ -99,7 +105,11 @@ export type Model =
   | 'eagle oc'
   | 'eagle'
   | 'ekwb'
-  | 'evo'
+  | 'epic x'
+  | 'ex'
+  | 'ex gamer'
+  | 'ex oc'
+  | 'fighter'
   | 'founders edition'
   | 'ftw3'
   | 'ftw3 black'
@@ -109,18 +119,24 @@ export type Model =
   | 'gamerock'
   | 'gamerock oc'
   | 'gaming oc'
+  | 'gaming oc waterforce wb'
   | 'gaming oc pro'
   | 'gaming pro oc'
   | 'gaming pro'
   | 'gaming trio'
+  | 'gaming z trio'
   | 'gaming x trio'
   | 'gaming x'
   | 'gaming x3'
+  | 'gaming z trio'
   | 'ghost'
   | 'ghost oc'
-  | 'suprim'
-  | 'suprim x'
   | 'gaming'
+  | 'hellhound'
+  | 'hellhound white'
+  | 'hof'
+  | 'hof limited edition'
+  | 'hof premium'
   | 'hurricane'
   | 'ichill x2'
   | 'ichill x3'
@@ -131,10 +147,14 @@ export type Model =
   | 'igame advanced oc'
   | 'igame ultra oc'
   | 'igame vulcan oc'
-  | 'intex'
+  | 'jetstream'
+  | 'jetstream oc'
+  | 'kngpn hybrid'
   | 'ko oc'
   | 'ko'
-  | 'mech oc'
+  | 'master'
+  | 'mech 2x'
+  | 'mech 2x oc'
   | 'merc'
   | 'merc core'
   | 'merc ultra'
@@ -144,20 +164,22 @@ export type Model =
   | 'nitro+ oc se'
   | 'nitro oc se'
   | 'nitro oc'
-  | 'oc thicc'
+  | 'oc'
   | 'pegasus'
   | 'pegasus oc'
   | 'phantom'
   | 'phantom gaming'
+  | 'phantom gaming oc'
   | 'phantom gs'
   | 'phoenix gs oc'
   | 'phoenix gs'
+  | 'phoenix 8G (LHR)'
   | 'phoenix'
   | 'ps5 console'
   | 'ps5 digital'
   | 'pulse'
   | 'pulse oc'
-  | 'raw'
+  | 'qick ultra'
   | 'red devil'
   | 'red dragon'
   | 'sg oc'
@@ -165,14 +187,19 @@ export type Model =
   | 'single fan'
   | 'stormx oc'
   | 'strix lc'
+  | 'strix oc lc'
   | 'strix oc'
   | 'strix'
   | 'strix oc white'
   | 'strix white'
+  | 'suprim'
+  | 'suprim x'
+  | 'swft'
   | 'taichi'
   | 'taichi x oc'
   | 'thicc'
   | 'trinity oc'
+  | 'trinity oc lhr'
   | 'trinity'
   | 'triple dissipation'
   | 'tuf oc'
@@ -188,8 +215,13 @@ export type Model =
   | 'ventus 2x'
   | 'ventus 3x oc'
   | 'ventus 3x'
+  | 'ventus 2X (LHR)'
   | 'vision oc'
   | 'vision'
+  | 'x3'
+  | 'x3 oc'
+  | 'x trio'
+  | 'x3 oc'
   | 'xbox series s'
   | 'xbox series x'
   | 'xc black'
@@ -200,25 +232,69 @@ export type Model =
   | 'xc3'
   | 'xlr8 epic x'
   | 'xlr8 gaming'
+  | 'xlr8 gaming uprising epic x'
   | 'xlr8 revel'
+  | 'xlr8 revel epic x'
   | 'xlr8 uprising'
-  | 'zen'
+  | 'xtreme'
   | 'qick';
 
-  export type Link = {
-    brand: Brand;
-    name?: string | null;
-    cartUrl?: string;
-    itemNumber?: string;
-    labels?: Labels;
-    model: Model;
-    openCartAction?: (browser: Browser) => Promise<string>;
-    price?: number | null;
-    series: Series;
-    screenshot?: string | null;
-    url: string;
-    loginUrl?: string;
-    notified?: boolean | false;
+export type Link = {
+  brand: Brand;
+  cartUrl?: string;
+  itemNumber?: string;
+  labels?: Labels;
+  model: Model;
+  openCartAction?: (browser: Browser) => Promise<string>;
+  price?: number | null;
+  series: Series;
+  screenshot?: string;
+  url: string;
+};
+
+export type CaptchaHandlerElements = {
+  challenge: string;
+  input: string;
+  submit: string;
+  captureType?: string;
+};
+
+export type LabelQuery = Element[] | Element | string[];
+
+export type Labels = {
+  bannedSeller?: LabelQuery;
+  captcha?: LabelQuery;
+  captchaHandler?: CaptchaHandlerElements;
+  container?: string;
+  inStock?: LabelQuery;
+  outOfStock?: LabelQuery;
+  maxPrice?: Pricing;
+};
+
+export type CaptchaDeterrent = {
+  hardLinks?: string[];
+  searchUrl?: string;
+  searchTerms?: string[];
+};
+
+export type StatusCodeRangeArray = Array<number | [number, number]>;
+
+export type Store = {
+  realTimeInventoryLookup?: (itemNumber: string) => Promise<boolean>;
+  /**
+   * The range of status codes which will trigger backoff, i.e. an increasing
+   * delay between requests. Setting an empty array will disable the feature.
+   * If not defined, the default range will be used: 403.
+   */
+  backoffStatusCodes?: StatusCodeRangeArray;
+  disableAdBlocker?: boolean;
+  links: Link[];
+  linksBuilder?: {
+    builder: (docElement: cheerio.Cheerio, series: Series) => Link[];
+    ttl?: number;
+    waitUntil?: PuppeteerLifeCycleEvent;
+    waitForSelector?: string;
+    urls: Array<{series: Series; url: string | string[]}>;
   };
   
   export type LabelQuery = Element[] | Element | string[];

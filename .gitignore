@@ -10,6 +10,7 @@ dotenv
 dotenv-c-*
 *.proxies
 success-*.png
+screenshots/
 
 *.wav
 *.mp3

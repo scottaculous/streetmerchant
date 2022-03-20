@@ -1,8 +1,9 @@
-import {Link, Store} from '../../src/store/model';
 import open from 'open';
-import {sendNotification} from '../../src/notification';
+import {sendNotification} from '../../src/messaging';
 import {config} from '../../src/config';
+import {getTestStore} from '../util';
 
+<<<<<<< HEAD
 const link: Link = {
   brand: 'test:brand',
   cartUrl: 'https://www.example.com/cartUrl',
@@ -26,6 +27,10 @@ const store: Store = {
   links: [link],
   name: 'test:name',
 };
+=======
+const store = getTestStore();
+const link = store.links[0];
+>>>>>>> 0906f64d001413383ae30861ecb155561ec4eac5
 
 /**
  * Send test email.
@@ -35,7 +40,7 @@ sendNotification(link, store);
 /**
  * Open browser.
  */
-if (config.browser.open) {
+if (!config.docker && config.browser.open) {
   open(link.cartUrl ?? link.url);
   open(link.url);
 }

@@ -1,5 +1,6 @@
 import {
   Browser,
+  PageEventObject,
   Page,
   HTTPRequest,
   HTTPResponse,
@@ -22,8 +23,11 @@ import {fetchLinks} from './fetch-links';
 import {filterStoreLink} from './filter';
 import open from 'open';
 import {processBackoffDelay} from './model/helpers/backoff';
-import {sendNotification} from '../notification';
+import {sendNotification} from '../messaging';
+import {handleCaptchaAsync} from './captcha-handler';
 import useProxy from '@doridian/puppeteer-page-proxy';
+import {promises as fs} from 'fs';
+import path from 'path';
 
 const inStock: Record<string, boolean> = {};
 
@@ -198,7 +202,7 @@ async function lookup(browser: Browser, store: Store) {
     let adBlockRequestHandler: any;
     let pageProxy;
     if (useAdBlock) {
-      const onProxyFunc = (event: string, handler: any) => {
+      const onProxyFunc = (event: keyof PageEventObject, handler: any) => {
         if (event !== 'request') {
           page.on(event, handler);
           return;
@@ -278,6 +282,15 @@ async function lookup(browser: Browser, store: Store) {
       await disableBlockerInPage(pageProxy);
     }
 
+    if (
+      store.currentProxyIndex !== undefined &&
+      store.proxyList &&
+      store.proxyList?.length > 1
+    ) {
+      const client = await page.target().createCDPSession();
+      await client.send('Network.clearBrowserCookies');
+    }
+
     // Must apply backoff before closing the page, e.g. if CloudFlare is
     // used to detect bot traffic, it introduces a 5 second page delay
     // before redirecting to the next page
@@ -336,7 +349,11 @@ async function lookupIem(
     if (config.page.screenshot) {
       logger.debug('ℹ saving screenshot');
 
-      link.screenshot = `success-${Date.now()}.png`;
+      await fs.mkdir(config.page.screenshotDir, {recursive: true});
+      link.screenshot = path.join(
+        config.page.screenshotDir,
+        `success-${Date.now()}.png`
+      );
       await page.screenshot({path: link.screenshot});
     }
   }
@@ -411,7 +428,11 @@ async function checkIsCloudflare(store: Store, page: Page, link: Link) {
   return false;
 }
 
-async function isItemInStock(store: Store, page: Page, link: Link) {
+async function isItemInStock(
+  store: Store,
+  page: Page,
+  link: Link
+): Promise<boolean> {
   const baseOptions: Selector = {
     requireVisible: false,
     selector: store.labels.container ?? 'body',
@@ -427,8 +448,20 @@ async function isItemInStock(store: Store, page: Page, link: Link) {
   if (store.labels.captcha) {
     if (await pageIncludesLabels(page, store.labels.captcha, baseOptions)) {
       logger.warn(Print.captcha(link, store, true));
-      await delay(getSleepTime(store));
-      return false;
+      if (config.captchaHandler.service && store.labels.captchaHandler) {
+        logger.debug(`[${store.name}] captcha handler called`);
+        if (!(await handleCaptchaAsync(page, store))) {
+          logger.warn(`[${store.name}] captcha handler failed`);
+          return false;
+        } else {
+          logger.debug(`[${store.name}] captcha handler done, checking item`);
+          return await isItemInStock(store, page, link);
+        }
+      } else {
+        logger.debug(`[${store.name}] captcha handler skipped`);
+        await delay(getSleepTime(store));
+        return false;
+      }
     }
   }
 
@@ -576,11 +609,11 @@ async function runCaptchaDeterrent(browser: Browser, store: Store, page: Page) {
 
 export async function tryLookupAndLoop(browser: Browser, store: Store) {
   if (!browser.isConnected()) {
-    logger.debug(`[${store.name}] Ending this loop as browser is disposed...`);
+    logger.silly(`[${store.name}] Ending this loop as browser is disposed...`);
     return;
   }
 
-  logger.debug(`[${store.name}] Starting lookup...`);
+  logger.silly(`[${store.name}] Starting lookup...`);
   try {
     await lookup(browser, store);
   } catch (error: unknown) {
@@ -588,6 +621,6 @@ export async function tryLookupAndLoop(browser: Browser, store: Store) {
   }
 
   const sleepTime = getSleepTime(store);
-  logger.debug(`[${store.name}] Lookup done, next one in ${sleepTime} ms`);
+  logger.silly(`[${store.name}] Lookup done, next one in ${sleepTime} ms`);
   setTimeout(tryLookupAndLoop, sleepTime, browser, store);
 }
