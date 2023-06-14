@@ -49,7 +49,7 @@ import {CanadaComputers} from './canadacomputers';
 import {Caseking} from './caseking';
 import {Ccl} from './ccl';
 import {Centrecom} from './centrecom';
-import {CollectiveMinds} from './collectiveminds';
+//import {CollectiveMinds} from './collectiveminds';
 import {Comet} from './comet';
 import {ComputerAlliance} from './computeralliance';
 import {Computeruniverse} from './computeruniverse';
@@ -89,7 +89,7 @@ import {Globaldata} from './globaldata';
 import {HardwarePlanet} from './hardware-planet';
 import {HarrisTechnology} from './harristechnology';
 import {HarveyNormanIE} from './harveynorman-ie';
-import {Intex} from './intex';
+//import {Intex} from './intex';
 import {Igamecomputer} from './igame';
 import {JohnLewis} from './johnlewis';
 import {Kabum} from './kabum';
@@ -221,7 +221,7 @@ export const storeList = new Map([
   [Caseking.name, Caseking],
   [Ccl.name, Ccl],
   [Centrecom.name, Centrecom],
-  [CollectiveMinds.name, CollectiveMinds],
+  //[CollectiveMinds.name, CollectiveMinds],
   [Comet.name, Comet],
   [ComputerAlliance.name, ComputerAlliance],
   [Computeruniverse.name, Computeruniverse],
@@ -262,7 +262,7 @@ export const storeList = new Map([
   [HarrisTechnology.name, HarrisTechnology],
   [HarveyNormanIE.name, HarveyNormanIE],
   [Igamecomputer.name, Igamecomputer],
-  [Intex.name, Intex],
+  //[Intex.name, Intex],
   [JohnLewis.name, JohnLewis],
   [Kabum.name, Kabum],
   [KomplettNO.name, KomplettNO],

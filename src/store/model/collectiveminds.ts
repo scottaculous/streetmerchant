@@ -1,3 +1,4 @@
+/*
 import {Store} from './store';
 
 export const CollectiveMinds: Store = {
@@ -31,3 +32,4 @@ export const CollectiveMinds: Store = {
   ],
   name: 'collectiveminds',
 };
+*/

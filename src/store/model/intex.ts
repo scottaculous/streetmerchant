@@ -1,3 +1,4 @@
+/*
 import {Store} from './store';
 
 export const Intex: Store = {
@@ -15,8 +16,8 @@ export const Intex: Store = {
       container: '.productView-product-price-availability > .availability > .stock',
       text: ['not available'],
     },
-    productTitle: '.productView-title',
-    productImage: '.productView-thumbnail-link > img',
+    //productTitle: '.productView-title',
+    //productImage: '.productView-thumbnail-link > img',
     loginUrl: 'https://intexcorp.com/login.php',
   },
   links: [
@@ -307,3 +308,4 @@ export const Intex: Store = {
   ],
   name: 'intex',
 };
+*/

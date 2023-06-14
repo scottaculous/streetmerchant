@@ -8,7 +8,7 @@ import {
 } from 'puppeteer';
 import {Link, Store, getStores} from './model';
 import {Print, logger} from '../logger';
-import {Selector, getPrice, getTitle, getImage, pageIncludesLabels} from './includes-labels';
+import {Selector, getPrice, pageIncludesLabels} from './includes-labels';
 import {
   closePage,
   delay,
@@ -332,11 +332,7 @@ async function lookupIem(
         : link.openCartAction(browser));
     }
 
-    // don't send notification, if it's in stock and notified
-    if (!link.notified) {
-      sendNotification(link, store);
-      link.notified = true;
-    }
+    sendNotification(link, store);
 
     if (config.page.inStockWaitTime) {
       inStock[link.url] = true;
@@ -439,12 +435,6 @@ async function isItemInStock(
     type: 'textContent',
   };
 
-  const imageOptions: Selector = {
-    requireVisible: false,
-    selector: store.labels.container ?? 'body',
-    type: 'imgSrc',
-  };
-
   if (store.labels.captcha) {
     if (await pageIncludesLabels(page, store.labels.captcha, baseOptions)) {
       logger.warn(Print.captcha(link, store, true));
@@ -477,51 +467,18 @@ async function isItemInStock(
   if (store.labels.outOfStock) {
     if (await pageIncludesLabels(page, store.labels.outOfStock, baseOptions)) {
       logger.info(Print.outOfStock(link, store, true));
-      link.notified = false;
       return false;
     }
   }
 
-  if (store.labels.productTitle) {
-    link.name = await getTitle(page, store.labels.productTitle, baseOptions);
-  }
-
-  if (store.labels.productImage) {
-    link.screenshot = await getImage(page, store.labels.productImage, imageOptions);
-  }
-
-  if (store.labels.loginUrl) {
-    link.loginUrl = store.labels.loginUrl;
-  }
-
-  if (store.labels.maxPrice) {
-    const maxPrice = config.store.maxPrice.series[link.series];
-
-    link.price = await getPrice(page, store.labels.maxPrice, baseOptions);
-
-    if (link.price && link.price > maxPrice && maxPrice > 0) {
-      logger.info(Print.maxPrice(link, store, maxPrice, true));
-      return false;
-    }
-  }
-  
-  // Fixme: currently causing issues
-  // Do API inventory validation in realtime (no cache) if available
-  // if (
-  // 	store.realTimeInventoryLookup !== undefined &&
-  // 	link.itemNumber !== undefined
-  // ) {
-  // 	return store.realTimeInventoryLookup(link.itemNumber);
-  // }
-
-  if (store.labels.inStock) {
+  if (link.labels?.inStock) {
     const options = {
       ...baseOptions,
       requireVisible: true,
       type: 'outerHTML' as const,
     };
 
-    if (!(await pageIncludesLabels(page, store.labels.inStock, options))) {
+    if (!(await pageIncludesLabels(page, link.labels.inStock, options))) {
       logger.info(Print.outOfStock(link, store, true));
       return false;
     }
